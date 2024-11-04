@@ -26,6 +26,7 @@ When('User submits registration with APIS', ()=> {
         registerApi(payload).then((response) => {
             cy.writeFile('cypress/fixtures/payloads/registerResponseWithApiPayload.json', response);
         })
+        cy.writeFile('cypress/fixtures/payloads/registerWithApiPayload.json', payload);
     })
     
 });
