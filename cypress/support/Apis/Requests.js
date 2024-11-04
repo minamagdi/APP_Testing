@@ -8,3 +8,15 @@ export const registerApi = (payload) =>{
         body :payload,
     })
 }
+
+export const loginApi = (payload) =>{
+    return cy.request({
+        method : 'POST',
+        url: 'https://todo.qacart.com/api/v1/users/login',
+        Headers: {
+            'Content-Type': 'application/json',
+            
+        },
+        body :payload,
+    })
+}
