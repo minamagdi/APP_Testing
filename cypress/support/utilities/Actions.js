@@ -4,7 +4,7 @@ class Actions {
     }
 
     type(element, text) {
-        return element.type(text)
+        return element.type(text);
     }
 }
 export const actions = new Actions();
