@@ -10,4 +10,7 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.feature",
     chromeWebSecurity: false,
   },
+  env: {
+    APIUrl: 'https://todo.qacart.com',
+  },
 });
