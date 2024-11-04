@@ -6,7 +6,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
     },
-   // baseUrl:"https://todo.qacart.com/",
+   baseUrl:"https://todo.qacart.com/",
     specPattern: "cypress/e2e/**/*.feature",
     chromeWebSecurity: false,
   },
