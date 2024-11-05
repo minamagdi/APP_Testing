@@ -1,6 +1,9 @@
 import { When, Then } from "cypress-cucumber-preprocessor/steps";
 import { loginApi } from "../../support/Apis/Requests";
 
+Given('User navigate to signIn page', () => {
+    cy.visit('/login');
+})
 When("User login with apis", () => {
     cy.readFile('cypress/fixtures/payloads/loginWithApiPayload.json').then((loginPayload) => {
         cy.readFile('cypress/fixtures/payloads/registerWithApiPayload.json').then((registerPayload) => {
