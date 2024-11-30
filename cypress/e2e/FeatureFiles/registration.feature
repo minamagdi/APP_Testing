@@ -1,3 +1,5 @@
+@Signup
+
 Feature: Registration
 
     Scenario: 01 Registration with valid data
