@@ -22,3 +22,18 @@ export const loginApi = (payload) =>{
         body :payload,
     })
 }
+
+export const createTaskApi = (taskName, token) =>{
+    return cy.request({
+        method : 'POST',
+        url: "https://todo.qacart.com/api/v1/tasks",
+        auth : {
+            bearer : token
+        },
+
+        body :{
+            "item":taskName,
+            "isCompleted":false
+        }
+    })
+}

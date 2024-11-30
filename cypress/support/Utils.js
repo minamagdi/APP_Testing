@@ -1,4 +1,4 @@
-class Utilis {
+class Utils {
     getRandomEmail() {
         const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
         const usernameLength = Math.floor(Math.random() * 10) + 5;  // Random length between 5-15
@@ -19,9 +19,9 @@ class Utilis {
         return `${username}@${domain}.${randomTld}`;
     }
 
-    gernerteRandomFirstName() {
+    generateRandomName() {
         const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-        const firstNameLength = Math.floor(Math.random() * 2) + 5;  
+        const firstNameLength = Math.floor(Math.random() * 2) + 5;
         // Generate random username
         let firstName = '';
         for (let i = 0; i < firstNameLength; i++) {
@@ -29,5 +29,18 @@ class Utilis {
         }
         return firstName;
     }
+
+    generateRandomPassword() {
+        const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const specialChars = '!@#$%^&*()_+[]{}|;:,.<>?';
+        const specialChar = specialChars[Math.floor(Math.random() * specialChars.length)];
+        const firstChar = uppercaseChars[Math.floor(Math.random() * uppercaseChars.length)]
+        let password ='';
+        for (let i = 0; i < 7; i++) {
+            password += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return firstChar +password +specialChar;
+    }
 }
-export const utilis = new Utilis();
+export const utils = new Utils();

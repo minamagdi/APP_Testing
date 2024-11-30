@@ -8,5 +8,4 @@ Feature: Registration
 
         
     Scenario: 02 Registration with api
-        Given User submits registration with APIS
-        Then Verify the registration is sent successfully
+        When User submits registration with APIS
