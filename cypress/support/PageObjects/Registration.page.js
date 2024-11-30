@@ -1,4 +1,4 @@
-import { utilis } from "../Utilis";
+import { utils } from "../Utils";
 import { actions } from "../utilities/Actions";
 import { assertions } from "../utilities/Assertoins";
 
@@ -34,11 +34,13 @@ class Registration {
 
     // page Actions
     registerWithValidData(){
-        actions.type(this.firstNameField(), utilis.gernerteRandomFirstName());
-        actions.type(this.lastNameField(), 'Magdy');
-        actions.type(this.emailField(), utilis.getRandomEmail());
-        actions.type(this.passwordField(), 'Mina@234');
-        actions.type(this.confirmPasswordField(), 'Mina@234');
+        const password = utils.generateRandomPassword();
+        utils.generateRandomPassword();
+        actions.type(this.firstNameField(), utils.generateRandomName());
+        actions.type(this.lastNameField(), utils.generateRandomName());
+        actions.type(this.emailField(), utils.getRandomEmail());
+        actions.type(this.passwordField(), password);
+        actions.type(this.confirmPasswordField(), password);
     }
 
     submit() {
