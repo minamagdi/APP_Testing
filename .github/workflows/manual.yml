@@ -1,0 +1,77 @@
+name: Manually triggered test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment'
+        required: true
+        default: 'QA'
+        options:
+          - 'QA'
+          - 'Dev'
+          - 'UAT'
+      product:
+        type: choice
+        description: 'Product'
+        required: false
+        default: 'sdk'
+        options:
+          - 'test1'
+          - 'test2'
+          - 'test3'
+      tags:
+        description: 'Tags'
+        required: true
+        default: '@Signup'
+      configFileName:
+        description: 'Config JSON File Name'
+        required: false
+        default: 'deployment1-RPM-QA'
+      browser:
+        type: choice
+        description: 'Browser'
+        required: true
+        default: 'electron'
+        options:
+          - 'electron'
+          - 'chrome'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      LUNCH_NAME: Manually triggered test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3.1.0
+
+      - name: Install node v16
+        uses: actions/setup-node@v3.5.0
+        with:
+          node-version: 16
+
+      - name: Use cached dependencies
+        uses: bahmutov/npm-install@v1.6.0
+  run-test:
+    runs-on: ubuntu-latest
+    needs: install
+    
+    name: Run ${{ github.event.inputs.tags }} test on ${{ github.event.inputs.product }} - ${{ github.event.inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.1.0
+
+      - name: InstallDeps
+        uses: cypress-io/github-action@v4.2.0
+        with:
+          runTests: false
+
+      - name: Create report and screenshot directories
+        run: mkdir -p report/{HTML,JSON} cypress/screenshots
+
+
